@@ -1,0 +1,19 @@
+apiVersion: v1 
+kind: ConfigMap 
+metadata:
+  name: Pod-config
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      env:
+        - name: myname
+          valueFrom:
+            configMapKeyRef:
+              name: nginx-config # name of the config map you are referencing to 
+              key: name #env.name and config map key name can be different
+        - name: location
+          valueFrom:
+            configMapKeyRef:
+              name: nginx-config # name of the config map you are referencing to 
+              key: location
